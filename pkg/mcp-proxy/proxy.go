@@ -119,15 +119,3 @@ func isJSONRPC(b []byte) bool {
 	return first == '{' || first == '['
 }
 
-func Run(listen string, externalURL string, commandArgs []string) error {
-	log.Printf("Starting MCP Auth Proxy on %s (External: %s)...", listen, externalURL)
-	if len(commandArgs) > 0 {
-		log.Printf("Spawning stdio downstream server: %v", commandArgs)
-		srv, err := NewStdioServer(commandArgs)
-		if err != nil {
-			return err
-		}
-		_ = srv
-	}
-	return nil
-}
